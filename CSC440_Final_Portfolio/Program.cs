@@ -53,6 +53,15 @@ namespace CSC440_Final_Portfolio
             //Console.WriteLine(IsArrayConsecutive(arr1));
             //Console.WriteLine(IsArrayConsecutive(arr));
 
+            //int num = -2332;
+            //Console.Write(IsPalindrome(num));
+
+            //int num = 1234;
+            //Console.Write("Reverse of " + num + " is " + ReverseDigits(num));
+
+            //int[] array = new int[] { 1, 2, 5 };
+            //int[] result = AddOneToLastElement(array);
+
         }
         public static int LargestDivisor(int n)
         {
@@ -349,6 +358,81 @@ namespace CSC440_Final_Portfolio
                 }
             }
             return true;
+        }
+
+        //End of Java problems and translations
+
+        //Start of Leet Code Problems
+
+        public static bool IsPalindrome(int x)
+        {
+            //function to discover if a number is a palindrome
+            if (x < 0 || (x % 10 == 0 && x != 0))
+            {
+                return false;
+            }
+
+            int revertedNumber = 0;
+            while (x > revertedNumber)
+            {
+                revertedNumber = revertedNumber * 10 + x % 10;
+                x /= 10;
+            }
+            return x == revertedNumber || x == revertedNumber / 10;
+        }
+
+        static int ReverseDigits(int num)
+        {
+            //function to reverse the digits in a given number
+            int revNum = 0;
+            while (num > 0)
+            {
+                revNum = revNum * 10 + num % 10;
+                num /= 10;
+            }
+            return revNum;
+        }
+        public static int[] TwoSum(int[] nums, int target)
+        {
+            //Function to find if the sum of two elements in an integer array equal an inputted target number.
+            for (int i = 0; i < nums.Length; i++)
+             {
+                for (int j = i + 1; j < nums.Length; j++)
+                 {
+                    if (nums[j] == target - nums[i])
+                     {
+                        return new int[] { i, j };
+                     }
+                 }
+             }
+                throw new Exception("No two sum solution");
+        }
+        
+        public static int[] AddOneToLastElement(int[] array)
+        {
+            //This function takes an integer array and adds one to the last element. If the last element ends up be greater than 9 the one carries over and a new array is created.
+            int plusOne = 1;
+
+            for(int i = array.Length-1; i >= 0; i--)
+            {
+                int lastElement = array[i];
+                lastElement = lastElement + plusOne;
+
+                if(lastElement < 10)
+                {
+                    array[i] = lastElement;
+                    return array;
+                }
+                else
+                {
+                    array[i] = 0;
+                    plusOne = 1;
+                }
+            }
+
+            int[] newArray = new int[array.Length + 1];
+            newArray[0] = 1;
+            return newArray;
         }
 
     }
