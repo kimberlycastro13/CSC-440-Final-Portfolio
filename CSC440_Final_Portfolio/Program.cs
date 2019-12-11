@@ -63,6 +63,8 @@ namespace CSC440_Final_Portfolio
             //int[] result = AddOneToLastElement(array);
 
         }
+
+        //Start of Java questions and translations.
         public static int LargestDivisor(int n)
         {
             //Translated from Java
@@ -362,7 +364,7 @@ namespace CSC440_Final_Portfolio
 
         //End of Java problems and translations
 
-        //Start of Leet Code Problems
+        //Start of Leet Code problems
 
         public static bool IsPalindrome(int x)
         {
@@ -433,6 +435,52 @@ namespace CSC440_Final_Portfolio
             int[] newArray = new int[array.Length + 1];
             newArray[0] = 1;
             return newArray;
+        }
+
+        //End of Leet Code problems.
+
+        //Start of Searching algorithms translated from Python to C#
+        //Source Code: Grokking Algorithms: An illustrated guide for programmers and other curious people by Aditya Y. Bhargava
+
+        public static int BinarySearch(int[] arr, int value)
+        {
+            //Binary search is O(log n). It can only work on a sorted list. It checks the middle element and if the value is less than the middle element it assigns the middle element as the new high.
+            //If the value is greater than the middle element it assigns the middle element as the new low.
+            int low = 0;
+            int high = arr.Length - 1;
+
+            while(low <= high)
+            {
+                int mid = (low + high) / 2;
+
+                if (arr[mid] == value)
+                    return mid;
+                else if (arr[mid] > value)
+                    high = mid - 1;
+                else
+                    low = mid + 1;
+            }
+            return -1;
+        }
+
+        public static void SelectionSort(int[] arr)
+        {
+            //Selection sort can sort an unsorted array. If you have to find the smallest element in the array and then swaps the elements at smallest and i
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                //finds the smallest element in the array
+                int smallest = i;
+                for (int j = i + 1; j < arr.Length; j++)
+                {
+                    if (arr[j] < arr[smallest])
+                        smallest = j;
+                }
+
+                //swaps the element at smallest and i
+                int temp = arr[i];
+                arr[i] = arr[smallest];
+                arr[smallest] = temp;
+            }
         }
 
     }
